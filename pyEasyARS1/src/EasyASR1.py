@@ -16,7 +16,7 @@ class EasyASR(object):
     classdocs
     '''
 
-    def __init__(self, filePath="/home/francisco/voz",ldis=0.15,dthres=49):
+    def __init__(self, filePath="/home/francisco/voz",ldis=0.15,dthres=60):
         '''
         Constructor
         '''
@@ -36,7 +36,7 @@ class EasyASR(object):
     #return the kNN where k=1 dscriminating by length
     def get1NN(self,mfcc_feat2):
         minrd=1e40
-        mkrd="NONE"
+        mkrd="none_none_0000"
         for k in sorted(self.mfccs.keys()):
             mfcc_feat1=self.mfccs[k]
             l1=len(mfcc_feat1)
@@ -51,7 +51,7 @@ class EasyASR(object):
                     minrd=rd
                     mkrd=k
         if minrd>self.distThreshold:
-            return "NONE",minrd
+            return "none_none_0000",minrd
         else:
             return mkrd,minrd
     
@@ -70,7 +70,7 @@ class EasyASR(object):
     
 if __name__ == '__main__':
     asr=EasyASR()
-    while True:
-        print asr.recognizeFromMic()
+    #while True:
+    print asr.recognizeFromMic()
 
         
